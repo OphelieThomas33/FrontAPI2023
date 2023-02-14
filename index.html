@@ -7,32 +7,23 @@
     <title>Document</title>
 </head>
 <body>
+    <input id="pageNum" placeholder="numéro de page">
+    <button id="getUsers">Get Users</button>
     <div id="allEntries">
         Chargement...
     </div>
 
-
-    <script>
-        // définir les paramètres de requête :
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-        };
-
-        // envoi de la requête HTTP :  
-        fetch("https://api.publicapis.org/entries", requestOptions)
-        // quand je reçois la réponse (toujours au format texte => la transformer en json)
-        .then(response => response.json())
-        // quand le texte est transformé en json 
-        .then(result => {
-            let entriesDiv = document.getElementById("allEntries");
-            entriesDiv.innerHTML = result.count + '<br/>' + '<br/>';
-            result.entries.forEach(element => {
-                entriesDiv.innerHTML += element.Link + '<br/>'
-                
-            })});
-            // console.log(result)})
-        // .catch(error => console.log('error', error));
-    </script>
+    <div>
+        <div>
+            Nom
+            <input type="text" id="nomInput">
+        </div>
+        <div>
+            Job
+            <input type="text" id="jobInput">
+        </div>
+        <button onclick="createUser()">Créer</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
