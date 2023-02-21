@@ -65,4 +65,26 @@ header {
   .nav-active {
     right: 0;
   }
+}
+.replay-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.linkReplay {
+  background-color: white;
+  padding: 15px;
+  border-radius: 15px;
+  width: 30%;
+  margin-top: 15px;
+}
+.linkReplay .link-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.linkReplay .linkReplayContent {
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=style.css.map */

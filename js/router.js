@@ -1,10 +1,3 @@
-const route = (event) => {
-    event = event || window.event;
-    event.preventDefault();
-    window.history.pushState({}, "", event.target.href);
-    handleLocation();
-};
-
 const routes = {
     404: "/pages/404.html",
     "/": "/pages/home.html",
@@ -25,12 +18,19 @@ const handleLocation = async () => {
     //Ajout de l'html
     const html = await fetch(route).then((data) => data.text());
     document.getElementById("main-page").innerHTML = html;
-    // Ajout du JS
-    if(routesJS[path] != undefined){
-        let scriptTag = document.createElement('script');
-        scriptTag.setAttribute("type","text/javascript");
-        scriptTag.setAttribute("src", routesJS[path]);
-
-        document.querySelector("body").appendChild(scriptTag);
-    }
 }
+
+const route = (event) => {
+    event = event || window.event;
+    event.preventDefault();
+    window.history.pushState({}, "", event.target.href);
+    handleLocation();
+};
+
+handleLocation()
+
+const navlink = document.querySelectorAll('.navlink')
+const essai = document.querySelector('.essai')
+
+navlink.addEventListener('click', handleLocation);
+essai.addEventListener('click', handleLocation);
