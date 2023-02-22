@@ -36,4 +36,27 @@ fetch('https://localhost:7076/api/Replays', requestOptions)
         myDiv.innerHTML += replayHtml
     });
   })
-  .catch(error => console.log('error', error));
+  .catch(error => {
+    console.log('error', error)
+    alert("Impossible de joindre l'API.")
+});
+
+document.querySelectorAll(".background-modal").forEach(element => {
+    element.addEventListener('click', (e) => {
+      e.currentTarget.classList.toggle('hide')   // si on clique sur le background-modal on le cache 'hide'
+    })
+})
+
+document.querySelectorAll(".modal").forEach(element => {
+    element.addEventListener('click', (e) => {
+      e.stopPropagation()  // on empeche la fonction appliquée à .background-modal de s'appliquer sur la modale
+    })
+})
+
+document.querySelectorAll(".open-modal").forEach(element => {
+    element.addEventListener('click', (e) => {
+        let cible = e.currentTarget.dataset.cible
+        document.querySelector(cible).classList.toggle("hide") // inverser l'état de visibilité de l'élément qui contient .hide
+    })
+})
+
